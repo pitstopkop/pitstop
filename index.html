@@ -4,27 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pitstop – Επαγγελματική Επισκευή Ελαστικών | Κομοτηνή, Ελλάδα</title>
+    <title>Pitstop – Επαγγελματική Επισκευή Ελαστικών | Κοπτερό</title>
     <meta name="description"
-        content="Pitstop – Ελαστικά Κομοτηνή. Αλλαγή, ζυγοστάθμιση, ευθυγράμμιση και επισκευή ελαστικών στην Κομοτηνή, Ελλάδα. Ταχύτητα, ασφάλεια και εμπιστοσύνη.">
+        content="Pitstop – Ελαστικά Κοπτερό. Αλλαγή, ζυγοστάθμιση, ευθυγράμμιση και επισκευή ελαστικών στο Κοπτερό. Ταχύτητα, ασφάλεια και εμπιστοσύνη.">
     <meta name="keywords"
-        content="Ελαστικά Κομοτηνή, Επισκευή ελαστικών, Ζυγοστάθμιση, Ευθυγράμμιση, Αλλαγή ελαστικών, Pitstop, Κομοτηνή, Ελλάδα">
+        content="Ελαστικά Κοπτερό, Επισκευή ελαστικών, Ζυγοστάθμιση, Ευθυγράμμιση, Αλλαγή ελαστικών, Pitstop, Κοπτερό">
     <meta name="robots" content="index, follow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* ═══════════════════════════════════════════
            DESIGN TOKENS
         ═══════════════════════════════════════════ */
         :root {
-            --black: #0a0a0a;
-            --carbon: #141414;
-            --carbon-mid: #1c1c1c;
-            --carbon-lite: #242424;
-            --grey-900: #2c2c2c;
+            --black: #080808;
+            --carbon: #111111;
+            --carbon-mid: #181818;
+            --carbon-lite: #222222;
+            --grey-900: #2a2a2a;
             --grey-800: #3a3a3a;
             --grey-700: #555;
             --grey-500: #888;
@@ -34,10 +32,13 @@
             --accent: #e8430a;
             --accent-glow: rgba(232, 67, 10, .35);
             --accent-dark: #b03308;
+            --accent-light: #ff6b35;
             --safety-orange: #f27d20;
+            --gold: #f5a623;
             --font-head: 'Outfit', sans-serif;
+            --font-display: 'Syncopate', sans-serif;
             --font-body: 'Inter', sans-serif;
-            --radius: 14px;
+            --radius: 16px;
             --radius-sm: 8px;
             --transition: .35s cubic-bezier(.4, 0, .2, 1);
         }
@@ -829,18 +830,196 @@
         }
 
         /* ═══════════════════════════════════════════
+           PARTICLE CANVAS
+        ═══════════════════════════════════════════ */
+        #particles-canvas {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            opacity: .35;
+        }
+
+        /* ═══════════════════════════════════════════
+           BRANDS MARQUEE
+        ═══════════════════════════════════════════ */
+        .brands {
+            padding: 60px 0;
+            background: var(--carbon);
+            border-top: 1px solid rgba(255,255,255,.04);
+            border-bottom: 1px solid rgba(255,255,255,.04);
+            overflow: hidden;
+        }
+        .brands-title {
+            text-align: center;
+            font-family: var(--font-head);
+            font-size: .75rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--grey-700);
+            margin-bottom: 32px;
+        }
+        .marquee-track {
+            display: flex;
+            gap: 64px;
+            animation: marquee 25s linear infinite;
+            width: max-content;
+        }
+        .marquee-track span {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--grey-800);
+            white-space: nowrap;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color var(--transition);
+        }
+        .marquee-track span:hover {
+            color: var(--accent);
+        }
+        @keyframes marquee {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ═══════════════════════════════════════════
+           TESTIMONIALS
+        ═══════════════════════════════════════════ */
+        .testimonials {
+            padding: 120px 0;
+            background: var(--black);
+            position: relative;
+        }
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+        .testimonials-header .section-subtitle { margin: 0 auto; }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 28px;
+        }
+        .testimonial-card {
+            background: var(--carbon-mid);
+            border: 1px solid rgba(255,255,255,.05);
+            border-radius: var(--radius);
+            padding: 36px 32px;
+            position: relative;
+            transition: all var(--transition);
+        }
+        .testimonial-card:hover {
+            border-color: rgba(232,67,10,.2);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(0,0,0,.4);
+        }
+        .testimonial-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 18px;
+        }
+        .testimonial-stars svg {
+            width: 18px; height: 18px;
+            fill: var(--gold);
+        }
+        .testimonial-card blockquote {
+            font-size: .95rem;
+            color: var(--grey-300);
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 24px;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .testimonial-avatar {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--safety-orange));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 1rem;
+            color: #fff;
+        }
+        .testimonial-name {
+            font-family: var(--font-head);
+            font-weight: 600;
+            font-size: .9rem;
+            color: var(--white);
+        }
+        .testimonial-role {
+            font-size: .78rem;
+            color: var(--grey-500);
+        }
+
+        /* ═══════════════════════════════════════════
+           FLOATING WHATSAPP / CALL BUTTON
+        ═══════════════════════════════════════════ */
+        .floating-cta {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 999;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 24px var(--accent-glow), 0 0 0 0 var(--accent-glow);
+            animation: pulse-ring 2.5s ease-out infinite;
+            transition: transform var(--transition), box-shadow var(--transition);
+            cursor: pointer;
+        }
+        .floating-cta:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 32px var(--accent-glow);
+            animation: none;
+        }
+        .floating-cta svg {
+            width: 26px; height: 26px;
+            stroke: #fff;
+            fill: none;
+            stroke-width: 2;
+        }
+        @keyframes pulse-ring {
+            0%   { box-shadow: 0 6px 24px var(--accent-glow), 0 0 0 0 rgba(232,67,10,.4); }
+            70%  { box-shadow: 0 6px 24px var(--accent-glow), 0 0 0 18px rgba(232,67,10,0); }
+            100% { box-shadow: 0 6px 24px var(--accent-glow), 0 0 0 0 rgba(232,67,10,0); }
+        }
+
+        /* ═══════════════════════════════════════════
+           GRADIENT LINE DIVIDER
+        ═══════════════════════════════════════════ */
+        .gradient-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), var(--safety-orange), transparent);
+            border: none;
+            margin: 0;
+        }
+
+        /* ═══════════════════════════════════════════
            ANIMATIONS
         ═══════════════════════════════════════════ */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes shimmer {
+            0%   { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50%      { transform: translateY(-8px); }
         }
 
         .reveal {
@@ -848,10 +1027,38 @@
             transform: translateY(40px);
             transition: opacity .7s ease-out, transform .7s ease-out;
         }
-
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* Staggered children reveal */
+        .reveal-stagger .reveal:nth-child(2) { transition-delay: .1s; }
+        .reveal-stagger .reveal:nth-child(3) { transition-delay: .2s; }
+        .reveal-stagger .reveal:nth-child(4) { transition-delay: .3s; }
+        .reveal-stagger .reveal:nth-child(5) { transition-delay: .4s; }
+
+        /* Shimmer text effect */
+        .shimmer-text {
+            background: linear-gradient(90deg, var(--white), var(--accent), var(--safety-orange), var(--white));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 4s linear infinite;
+        }
+
+        /* ═══════════════════════════════════════════
+           ACCESSIBILITY
+        ═══════════════════════════════════════════ */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            .marquee-track { animation: none; }
+            .floating-cta  { animation: none; }
         }
 
         /* ═══════════════════════════════════════════
@@ -931,20 +1138,30 @@
             .services-grid {
                 grid-template-columns: 1fr;
             }
-
             .hero-actions {
                 flex-direction: column;
             }
-
             .btn {
                 justify-content: center;
                 width: 100%;
+            }
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            .floating-cta {
+                bottom: 18px;
+                right: 18px;
+                width: 52px;
+                height: 52px;
             }
         }
     </style>
 </head>
 
 <body>
+
+    <!-- Particle Background -->
+    <canvas id="particles-canvas"></canvas>
 
     <!-- ══════════ NAVBAR ══════════ -->
     <nav class="navbar" id="navbar">
@@ -965,21 +1182,17 @@
     <!-- ══════════ HERO ══════════ -->
     <section class="hero" id="hero">
         <div class="hero-bg">
-            <img src="hero-bg.png" alt="Pitstop - Επαγγελματικό Συνεργείο Ελαστικών Κομοτηνή" width="1920"
+            <img src="hero-bg.png" alt="Pitstop - Επαγγελματικό Συνεργείο Ελαστικών Κοπτερό" width="1920"
                 height="1080">
         </div>
         <div class="container">
             <div class="hero-content">
                 <div class="hero-badge">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                    </svg>
-                    Κομοτηνή &mdash; Ελλάδα
+                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>
+                    Κοπτερό
                 </div>
-                <h1>Pitstop<br><span class="highlight">Επαγγελματική Επισκευή<br>Ελαστικών</span></h1>
-                <p>Ταχύτητα, ασφάλεια και αξιοπιστία σε κάθε τροχό. Εμπιστευτείτε τους ειδικούς στα ελαστικά στην
-                    Κομοτηνή
-                    — με σύγχρονο εξοπλισμό και χρόνια εμπειρίας.</p>
+                <h1>Pitstop<br><span class="shimmer-text">Επαγγελματική Επισκευή<br>Ελαστικών</span></h1>
+                <p>Ταχύτητα, ασφάλεια και αξιοπιστία σε κάθε τροχό. Εμπιστευτείτε τους ειδικούς στα ελαστικά στο Κοπτερό — με σύγχρονο εξοπλισμό και χρόνια εμπειρίας.</p>
                 <div class="hero-actions">
                     <a href="tel:6986704811" class="btn btn-primary">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -1008,6 +1221,18 @@
                     <div class="label">Ικανοποιημένοι Πελάτες</div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Gradient Divider -->
+    <hr class="gradient-divider">
+
+    <!-- ══════════ BRANDS MARQUEE ══════════ -->
+    <section class="brands">
+        <p class="brands-title">Συνεργαζόμαστε με κορυφαίες μάρκες</p>
+        <div class="marquee-track">
+            <span>Michelin</span><span>Bridgestone</span><span>Continental</span><span>Pirelli</span><span>Goodyear</span><span>Dunlop</span><span>Hankook</span><span>Yokohama</span><span>Firestone</span><span>Toyo</span>
+            <span>Michelin</span><span>Bridgestone</span><span>Continental</span><span>Pirelli</span><span>Goodyear</span><span>Dunlop</span><span>Hankook</span><span>Yokohama</span><span>Firestone</span><span>Toyo</span>
         </div>
     </section>
 
@@ -1091,12 +1316,15 @@
         </div>
     </section>
 
+    <!-- Gradient Divider -->
+    <hr class="gradient-divider">
+
     <!-- ══════════ ABOUT ══════════ -->
     <section class="about" id="about">
         <div class="container">
             <div class="about-grid">
                 <div class="about-image reveal">
-                    <img src="hero-bg.png" alt="Pitstop Κομοτηνή – Εργαστήριο Ελαστικών">
+                    <img src="about-img.png" alt="Pitstop Κοπτερό – Εργαστήριο Ελαστικών">
                     <div class="about-experience">
                         <div class="big">8+</div>
                         <div class="small">Χρόνια Εμπειρίας</div>
@@ -1106,8 +1334,7 @@
                     <span class="section-tag">Σχετικά με εμάς</span>
                     <h2 class="section-title">Η Εμπιστοσύνη Χτίζεται<br>στον Δρόμο</h2>
                     <p>Στο <strong style="color: var(--white)">Pitstop</strong>, δεν αλλάζουμε απλά ελαστικά —
-                        φροντίζουμε την ασφάλειά σας. Βρισκόμαστε στην <strong style="color: var(--white)">Κομοτηνή,
-                            Ελλάδα</strong> και εξυπηρετούμε οδηγούς σε ολόκληρη την περιοχή της Κομοτηνής.</p>
+                        φροντίζουμε την ασφάλειά σας. Βρισκόμαστε στο <strong style="color: var(--white)">Κοπτερό</strong> και εξυπηρετούμε οδηγούς σε ολόκληρη την περιοχή.</p>
                     <p>Με σύγχρονο εξοπλισμό, γνήσια ανταλλακτικά και ομάδα πιστοποιημένων τεχνικών, εγγυόμαστε
                         αποτελέσματα που αντέχουν στον χρόνο. Η αποστολή μας είναι απλή: να φτάνετε στον προορισμό σας
                         με σιγουριά.</p>
@@ -1156,13 +1383,14 @@
         </div>
     </section>
 
+
     <!-- ══════════ CONTACT ══════════ -->
     <section class="contact" id="contact">
         <div class="container">
             <div class="contact-grid">
                 <div class="contact-info reveal">
                     <span class="section-tag">Επικοινωνία</span>
-                    <h2 class="section-title">Βρείτε μας<br>στην Κομοτηνή</h2>
+                    <h2 class="section-title">Βρείτε μας<br>στο Κοπτερό</h2>
                     <p class="section-subtitle">Είμαστε εδώ για εσάς. Επικοινωνήστε μαζί μας τηλεφωνικά ή επισκεφτείτε
                         μας ​​​​στο κατάστημά μας.</p>
 
@@ -1176,7 +1404,7 @@
                             </div>
                             <div class="contact-item-text">
                                 <h4>Διεύθυνση</h4>
-                                <p>Κοπτερό, Κομοτηνή, 69200<br>Ελλάδα</p>
+                                <p>Κοπτερό, 69200<br>Ελλάδα</p>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -1209,7 +1437,7 @@
                 <div class="map-wrapper reveal">
                     <iframe src="https://maps.google.com/maps?q=41.1191390,25.1214238&z=15&output=embed"
                         allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                        title="Pitstop – Κομοτηνή στον Χάρτη">
+                        title="Pitstop – Κοπτερό στον Χάρτη">
                     </iframe>
                 </div>
             </div>
@@ -1220,7 +1448,7 @@
     <footer class="footer">
         <div class="container">
             <a href="#" class="footer-logo">Pit<span>stop</span></a>
-            <p class="footer-copy">&copy; 2026 Pitstop – Ελαστικά Κομοτηνή. Με επιφύλαξη παντός δικαιώματος.</p>
+            <p class="footer-copy">&copy; 2026 Pitstop – Ελαστικά Κοπτερό. Με επιφύλαξη παντός δικαιώματος.</p>
             <div class="footer-socials">
                 <a href="https://www.instagram.com/pitstop_kop" target="_blank" rel="noopener noreferrer"
                     aria-label="Instagram">
@@ -1246,8 +1474,75 @@
         </div>
     </footer>
 
-    <!-- ══════════ JAVASCRIPT ══════════ -->
+    <!-- ══════════ FLOATING CALL BUTTON ══════════ -->
+    <a href="tel:6986704811" class="floating-cta" aria-label="Καλέστε μας">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+        </svg>
+    </a>
+
     <script>
+        /* ── Particle Background ── */
+        (function() {
+            const canvas = document.getElementById('particles-canvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            const PARTICLE_COUNT = 50;
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            function createParticle() {
+                return {
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.3,
+                    vy: (Math.random() - 0.5) * 0.3,
+                    r: Math.random() * 2 + 0.5,
+                    alpha: Math.random() * 0.5 + 0.1
+                };
+            }
+            for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(createParticle());
+
+            function drawParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => {
+                    p.x += p.vx; p.y += p.vy;
+                    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(232, 67, 10, ${p.alpha})`;
+                    ctx.fill();
+                });
+                // Draw connections
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 150) {
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.strokeStyle = `rgba(232, 67, 10, ${0.08 * (1 - dist / 150)})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(drawParticles);
+            }
+            // Respect reduced motion
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                drawParticles();
+            }
+        })();
+
         /* ── Navbar scroll effect ── */
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
@@ -1280,6 +1575,30 @@
         };
         window.addEventListener('scroll', revealOnScroll);
         window.addEventListener('DOMContentLoaded', revealOnScroll);
+
+        /* ── Animated counter for stat numbers ── */
+        function animateCounters() {
+            document.querySelectorAll('.stat-card .number').forEach(el => {
+                if (el.dataset.animated) return;
+                const rect = el.getBoundingClientRect();
+                if (rect.top > window.innerHeight) return;
+                el.dataset.animated = 'true';
+                const text = el.textContent.trim();
+                const match = text.match(/^(\d+)(.*)$/);
+                if (!match) return;
+                const target = parseInt(match[1]);
+                const suffix = match[2];
+                let current = 0;
+                const step = Math.ceil(target / 40);
+                const interval = setInterval(() => {
+                    current += step;
+                    if (current >= target) { current = target; clearInterval(interval); }
+                    el.textContent = current + suffix;
+                }, 30);
+            });
+        }
+        window.addEventListener('scroll', animateCounters);
+        window.addEventListener('DOMContentLoaded', animateCounters);
 
         /* ── Smooth scroll for all anchors ── */
         document.querySelectorAll('a[href^="#"]').forEach(a => {
